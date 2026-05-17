@@ -3,7 +3,9 @@
 import { Dropdown, Label, Button } from "@heroui/react";
 import { FaAngleDown } from "react-icons/fa";
 
-export default function ProfileDropdown() {
+import React from 'react';
+
+const ProfileDropdown = () => {
     return (
         <Dropdown>
             <Button
@@ -30,14 +32,6 @@ export default function ProfileDropdown() {
                         <Label>Profile</Label>
                     </Dropdown.Item>
 
-                    <Dropdown.Item id="settings" textValue="Settings">
-                        <Label>Settings</Label>
-                    </Dropdown.Item>
-
-                    <Dropdown.Item id="copy-link" textValue="Copy link">
-                        <Label>Copy link</Label>
-                    </Dropdown.Item>
-
                     <Dropdown.Item
                         id="logout"
                         textValue="Logout"
@@ -49,4 +43,6 @@ export default function ProfileDropdown() {
             </Dropdown.Popover>
         </Dropdown>
     );
-}
+};
+
+export default ProfileDropdown;

@@ -5,29 +5,35 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import ProfileDropdown from "./ProfileDropdown";
+import { ThemeSwitch } from "./ThemeToggle";
 
-const NavbarClient = ({ navLinks }) => {
+export default function NavbarClient({ navLinks }) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
+
+    const isActive = (href) => {
+        if (href === "/") return pathname === "/";
+        return pathname.startsWith(href);
+    };
 
     return (
         <div className="flex items-center gap-3">
 
-
+            {/* DESKTOP NAV */}
             <div className="hidden md:flex items-center gap-2">
                 {navLinks.map((item) => {
-                    const active = pathname.startsWith(item.href);
+                    const active = isActive(item.href);
 
                     return (
                         <Link
                             key={item.href}
                             href={item.href}
                             className={`rounded-full px-4 py-2 text-sm font-semibold transition
-                ${active
-                                    ? "bg-white/10 text-white"
-                                    : "text-slate-300 hover:bg-white/5 hover:text-white"
+                                ${active
+                                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+                                    : "text-slate-700 hover:bg-slate-200/70 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
                                 }
-              `}
+                            `}
                         >
                             {item.label}
                         </Link>
@@ -35,34 +41,31 @@ const NavbarClient = ({ navLinks }) => {
                 })}
             </div>
 
-
+            {/* MOBILE BUTTONS */}
             <div className="flex md:hidden items-center gap-2">
-
-
                 <button
                     onClick={() => setOpen(!open)}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/20 bg-white/10 dark:bg-white/5 text-slate-900 dark:text-white"
                 >
                     {open ? <X size={18} /> : <Menu size={18} />}
                 </button>
 
-
+                <ThemeSwitch />
                 <ProfileDropdown />
             </div>
 
-
+            {/* MOBILE MENU */}
             <div
-                className={`absolute left-0 top-20 w-full border-b border-white/10 bg-[#081028]/95 backdrop-blur-xl md:hidden transition-all duration-300
-          ${open
+                className={`absolute left-0 top-20 w-full border-b border-slate-200/10 bg-white/95 text-slate-900 dark:bg-[#081028]/95 dark:text-white backdrop-blur-xl md:hidden transition-all duration-300
+                ${open
                         ? "opacity-100 translate-y-0 pointer-events-auto"
                         : "opacity-0 -translate-y-4 pointer-events-none"
-                    }
-        `}
+                    }`}
             >
                 <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5">
 
                     {navLinks.map((item) => {
-                        const active = pathname.startsWith(item.href);
+                        const active = isActive(item.href);
 
                         return (
                             <Link
@@ -70,11 +73,11 @@ const NavbarClient = ({ navLinks }) => {
                                 href={item.href}
                                 onClick={() => setOpen(false)}
                                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition
-                  ${active
-                                        ? "bg-white/10 text-white"
-                                        : "text-slate-300 hover:bg-white/5 hover:text-white"
+                                    ${active
+                                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
+                                        : "text-slate-700 hover:bg-slate-200/70 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-white/10 dark:hover:text-white"
                                     }
-                `}
+                                `}
                             >
                                 {item.label}
                             </Link>
@@ -85,6 +88,4 @@ const NavbarClient = ({ navLinks }) => {
             </div>
         </div>
     );
-};
-
-export default NavbarClient;
+}
