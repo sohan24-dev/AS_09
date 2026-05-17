@@ -17,9 +17,9 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 border-b border-slate-200/10 bg-white/70 dark:bg-[#081028]/80 backdrop-blur-xl transition-colors duration-300">
             <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-                {/* LOGO */}
+
                 <Link href="/" className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-600 via-blue-500 to-cyan-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-linear-to-br from-violet-600 via-blue-500 to-cyan-400">
                         <Lightbulb className="h-5 w-5 text-white" />
                     </div>
 
@@ -28,13 +28,38 @@ export default function Navbar() {
                     </h1>
                 </Link>
 
-                {/* NAV CLIENT */}
+
                 <NavbarClient navLinks={navigationItems} />
 
-                {/* DESKTOP RIGHT SIDE */}
-                <div className="hidden md:flex items-center gap-2">
-                    <ThemeSwitch />
+
+                <div className="hidden lg:flex items-center gap-2">
+                    <Link
+                        href="/login"
+                        className="
+          px-4 py-2 text-sm font-medium rounded-lg
+          border border-gray-300 dark:border-white/10
+          text-gray-700 dark:text-white
+          hover:bg-gray-100 dark:hover:bg-white/10
+          transition
+        "
+                    >
+                        Login
+                    </Link>
+
+                    {/* Register */}
+                    <Link
+                        href="/register"
+                        className="
+          px-4 py-2 text-sm font-medium rounded-lg
+          bg-gray-900 dark:bg-white
+          text-white dark:text-black
+          hover:opacity-90 transition
+        "
+                    >
+                        Register
+                    </Link>
                     <ProfileDropdown />
+                    <ThemeSwitch />
                 </div>
 
             </nav>

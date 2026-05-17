@@ -19,8 +19,8 @@ export default function NavbarClient({ navLinks }) {
     return (
         <div className="flex items-center gap-3">
 
-            {/* DESKTOP NAV */}
-            <div className="hidden md:flex items-center gap-2">
+
+            <div className="hidden lg:flex items-center gap-2">
                 {navLinks.map((item) => {
                     const active = isActive(item.href);
 
@@ -41,8 +41,8 @@ export default function NavbarClient({ navLinks }) {
                 })}
             </div>
 
-            {/* MOBILE BUTTONS */}
-            <div className="flex md:hidden items-center gap-2">
+
+            <div className="flex lg:hidden items-center gap-2">
                 <button
                     onClick={() => setOpen(!open)}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/20 bg-white/10 dark:bg-white/5 text-slate-900 dark:text-white"
@@ -50,13 +50,13 @@ export default function NavbarClient({ navLinks }) {
                     {open ? <X size={18} /> : <Menu size={18} />}
                 </button>
 
-                <ThemeSwitch />
                 <ProfileDropdown />
+                <ThemeSwitch />
             </div>
 
-            {/* MOBILE MENU */}
+
             <div
-                className={`absolute left-0 top-20 w-full border-b border-slate-200/10 bg-white/95 text-slate-900 dark:bg-[#081028]/95 dark:text-white backdrop-blur-xl md:hidden transition-all duration-300
+                className={`absolute left-0 top-20 w-full border-b border-slate-200/10 bg-white/95 text-slate-900 dark:bg-[#081028]/95 dark:text-white backdrop-blur-xl lg:hidden transition-all duration-300
                 ${open
                         ? "opacity-100 translate-y-0 pointer-events-auto"
                         : "opacity-0 -translate-y-4 pointer-events-none"

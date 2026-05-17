@@ -51,11 +51,11 @@ const WhyIdeaVault = () => {
     ];
 
     return (
-        <section className="py-20 px-4 w-full bg-gradient-to-b from-slate-50 to-white dark:from-[#081028] dark:to-[#081028]">
+        <section className="py-20 px-4 w-full bg-linear-to-b from-slate-50 to-white dark:from-[#081028] dark:to-[#081028]">
 
             <div className="max-w-6xl mx-auto">
 
-                {/* HEADER */}
+
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold text-slate-900 dark:text-white">
                         Why IdeaVault?
@@ -66,7 +66,7 @@ const WhyIdeaVault = () => {
                     </p>
                 </div>
 
-                {/* GRID */}
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {features.map((item, index) => (
                         <FeatureCard

@@ -80,7 +80,7 @@ const PopularCategories = () => {
                             <div
                                 key={index}
                                 className={`group cursor-pointer rounded-2xl p-6 border border-slate-200 dark:border-white/10
-                bg-gradient-to-br ${cat.color}
+                bg-linear-to-br ${cat.color}
                 hover:scale-[1.03] transition-all duration-300 shadow-sm hover:shadow-md`}
                             >
                                 {/* Icon */}

@@ -54,8 +54,8 @@ const Banner = () => {
                                 className="object-cover"
                             />
 
-                            {/* OVERLAY */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent flex items-center">
+
+                            <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent flex items-center">
 
                                 <div className="px-6 md:px-12 max-w-xl text-white">
 
