@@ -13,7 +13,7 @@ const ProfilePage = () => {
         refetch //refetch the session
     } = authClient.useSession()
     return (
-        <div className="flex justify-center mt-6 bg-gray-50 dark:bg-[#081028] px-4">
+        <div className="flex justify-center mt-6 px-4">
 
             <div className="w-full max-w-md rounded-3xl border border-gray-200 dark:border-white/10 bg-white/80 dark:bg-white/5 backdrop-blur-xl shadow-xl p-6">
 
@@ -21,7 +21,7 @@ const ProfilePage = () => {
                 <div className="flex flex-col items-center text-center">
 
                     <Image
-                        src={session?.user?.image || "https://i.pravatar.cc/300"}
+                        src={session?.user?.image || "user image"}
                         alt={session?.user?.name || "User"}
                         width={110}
                         height={110}

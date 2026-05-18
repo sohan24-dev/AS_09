@@ -17,7 +17,7 @@ export default function NavbarClient({ navLinks }) {
         error, //error object
         refetch //refetch the session
     } = authClient.useSession()
-    console.log(session, 'navberclient');
+    // console.log(session);
 
     const isActive = (href) => {
         if (href === "/") return pathname === "/";
@@ -58,7 +58,41 @@ export default function NavbarClient({ navLinks }) {
                     {open ? <X size={18} /> : <Menu size={18} />}
                 </button>
 
-                <ProfileDropdown />
+                {session?.user ? (
+                    <>
+                        <ProfileDropdown session={session} />
+                    </>
+                ) : (
+                    <>
+
+                        <Link
+                            href="/login"
+                            className="
+                                px-4 py-2 text-sm font-medium rounded-lg
+                                border border-gray-300 dark:border-white/10
+                                text-gray-700 dark:text-white
+                                hover:bg-gray-100 dark:hover:bg-white/10
+                                transition
+                            "
+                        >
+                            Login
+                        </Link>
+
+                        <Link
+                            href="/register"
+                            className="
+                                px-4 py-2 text-sm font-medium rounded-lg
+                                bg-gray-900 dark:bg-white
+                                text-white dark:text-black
+                                hover:opacity-90 transition
+                            "
+                        >
+                            Register
+                        </Link>
+                    </>
+                )}
+
+
                 <ThemeSwitch />
             </div>
 
