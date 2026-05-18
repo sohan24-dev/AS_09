@@ -6,10 +6,18 @@ import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import ProfileDropdown from "./ProfileDropdown";
 import { ThemeSwitch } from "./ThemeToggle";
+import { authClient } from "@/lib/auth-clients";
 
 export default function NavbarClient({ navLinks }) {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
+    console.log(session);
 
     const isActive = (href) => {
         if (href === "/") return pathname === "/";

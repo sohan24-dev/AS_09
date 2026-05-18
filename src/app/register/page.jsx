@@ -31,6 +31,14 @@ const RegisterPage = () => {
 
         console.log(session);
     };
+    const signIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        toast.success('Login successfully')
+
+        console.log(data);
+    };
 
 
 
@@ -152,6 +160,7 @@ const RegisterPage = () => {
 
 
                     <Button
+                        onClick={signIn}
                         type="button"
                         variant="bordered"
                         className="w-full border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10"

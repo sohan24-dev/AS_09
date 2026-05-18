@@ -11,9 +11,11 @@ import {
     TextField,
 } from "@heroui/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const LoginPage = () => {
+    const router = useRouter()
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -31,8 +33,17 @@ const LoginPage = () => {
             toast.error(error.message || "Login failed");
         } else {
             toast.success("Login successful");
-            console.log(data);
+            router.push('/')
+
         }
+    };
+    const signIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+        toast.success('Login successfully')
+
+        console.log(data);
     };
 
     return (
@@ -139,6 +150,7 @@ const LoginPage = () => {
 
                     <Button
                         type="button"
+                        onClick={signIn}
                         variant="bordered"
                         className="w-full h-11 rounded-xl flex items-center justify-center gap-2 border border-gray-300 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 transition"
                     >

@@ -1,10 +1,16 @@
+// 'use client'
+
 import Link from "next/link";
 import { Lightbulb } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
 import { ThemeSwitch } from "./ThemeToggle";
 import NavbarClient from "./NavberClient";
+import { authClient } from "@/lib/auth-clients";
 
-export default function Navbar() {
+export default async function Navbar() {
+    const { data: session, error } = await authClient.getSession()
+
+    console.log(session, 'session');
     const navigationItems = [
         { label: "Home", href: "/" },
         { label: "Ideas", href: "/ideas" },
@@ -46,7 +52,7 @@ export default function Navbar() {
                         Login
                     </Link>
 
-                    {/* Register */}
+
                     <Link
                         href="/register"
                         className="
