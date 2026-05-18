@@ -29,15 +29,17 @@ const RegisterPage = () => {
             return;
         }
 
-        console.log(session);
+        // console.log(session);
     };
     const signIn = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
         });
-        toast.success('Login successfully')
+        if (data) {
+            toast.success('Login successfully')
+        }
 
-        console.log(data);
+        // console.log(data);
     };
 
 

@@ -3,9 +3,16 @@
 import { Dropdown, Label, Button } from "@heroui/react";
 import { FaAngleDown } from "react-icons/fa";
 
-import React from 'react';
 
-const ProfileDropdown = () => {
+import Image from "next/image";
+import { authClient } from "@/lib/auth-clients";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+const ProfileDropdown = ({ session }) => {
+    const router = useRouter();
+    console.log(session, "session profile");
+
     return (
         <Dropdown>
             <Button
@@ -14,8 +21,10 @@ const ProfileDropdown = () => {
             >
 
                 <div className="h-8 w-8 rounded-full overflow-hidden">
-                    <img
-                        src="https://img.heroui.chat/image/avatar?w=400&h=400&u=3"
+                    <Image
+                        width={5}
+                        height={5}
+                        src={session?.user?.image}
                         alt="John Doe"
                         className="h-full w-full object-cover"
                     />
@@ -29,13 +38,17 @@ const ProfileDropdown = () => {
             <Dropdown.Popover>
                 <Dropdown.Menu onAction={(key) => console.log(key)}>
                     <Dropdown.Item id="profile" textValue="Profile">
-                        <Label>Profile</Label>
+                        <Link href={'/profile'}><Label>Profile</Label></Link>
                     </Dropdown.Item>
 
                     <Dropdown.Item
                         id="logout"
                         textValue="Logout"
                         variant="danger"
+                        onPress={async () => {
+                            await authClient.signOut();
+                            router.push("/login");
+                        }}
                     >
                         <Label>Logout</Label>
                     </Dropdown.Item>

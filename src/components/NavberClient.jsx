@@ -17,7 +17,7 @@ export default function NavbarClient({ navLinks }) {
         error, //error object
         refetch //refetch the session
     } = authClient.useSession()
-    console.log(session);
+    console.log(session, 'navberclient');
 
     const isActive = (href) => {
         if (href === "/") return pathname === "/";

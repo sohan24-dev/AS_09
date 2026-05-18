@@ -5,12 +5,15 @@ import { Lightbulb } from "lucide-react";
 import ProfileDropdown from "./ProfileDropdown";
 import { ThemeSwitch } from "./ThemeToggle";
 import NavbarClient from "./NavberClient";
-import { authClient } from "@/lib/auth-clients";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export default async function Navbar() {
-    const { data: session, error } = await authClient.getSession()
+    const session = await auth.api.getSession({
+        headers: await headers(),
+    });
 
-    console.log(session, 'session');
+    console.log(session, 'session navber');
     const navigationItems = [
         { label: "Home", href: "/" },
         { label: "Ideas", href: "/ideas" },
@@ -39,36 +42,49 @@ export default async function Navbar() {
 
 
                 <div className="hidden lg:flex items-center gap-2">
-                    <Link
-                        href="/login"
-                        className="
-          px-4 py-2 text-sm font-medium rounded-lg
-          border border-gray-300 dark:border-white/10
-          text-gray-700 dark:text-white
-          hover:bg-gray-100 dark:hover:bg-white/10
-          transition
-        "
-                    >
-                        Login
-                    </Link>
 
 
-                    <Link
-                        href="/register"
-                        className="
-          px-4 py-2 text-sm font-medium rounded-lg
-          bg-gray-900 dark:bg-white
-          text-white dark:text-black
-          hover:opacity-90 transition
-        "
-                    >
-                        Register
-                    </Link>
-                    <ProfileDropdown />
+                    {session?.user ? (
+                        <>
+                            <ProfileDropdown session={session} />
+                        </>
+                    ) : (
+                        <>
+
+                            <Link
+                                href="/login"
+                                className="
+                                px-4 py-2 text-sm font-medium rounded-lg
+                                border border-gray-300 dark:border-white/10
+                                text-gray-700 dark:text-white
+                                hover:bg-gray-100 dark:hover:bg-white/10
+                                transition
+                            "
+                            >
+                                Login
+                            </Link>
+
+                            <Link
+                                href="/register"
+                                className="
+                                px-4 py-2 text-sm font-medium rounded-lg
+                                bg-gray-900 dark:bg-white
+                                text-white dark:text-black
+                                hover:opacity-90 transition
+                            "
+                            >
+                                Register
+                            </Link>
+                        </>
+                    )}
+
+
                     <ThemeSwitch />
                 </div>
 
             </nav>
-        </header>
+
+
+        </header >
     );
 }
