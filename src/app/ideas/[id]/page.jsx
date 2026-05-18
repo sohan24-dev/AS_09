@@ -57,7 +57,7 @@ const IdDetailsPage = async ({ params }) => {
                         </h2>
 
                         <div className="flex flex-wrap gap-2 mt-3">
-                            {idea.Tags?.map((tag, i) => (
+                            {idea?.Tags?.map((tag, i) => (
                                 <span
                                     key={i}
                                     className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300"

@@ -43,7 +43,7 @@ const Banner = () => {
                 className="h-[260px] sm:h-[340px] md:h-[450px]"
             >
 
-                {banners.map((item, index) => (
+                {banners?.map((item, index) => (
                     <SwiperSlide key={index}>
                         <div className="relative w-full h-[260px] sm:h-[340px] md:h-[450px]">
 

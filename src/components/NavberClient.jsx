@@ -29,7 +29,7 @@ export default function NavbarClient({ navLinks }) {
 
 
             <div className="hidden lg:flex items-center gap-2">
-                {navLinks.map((item) => {
+                {navLinks?.map((item) => {
                     const active = isActive(item.href);
 
                     return (
@@ -106,7 +106,7 @@ export default function NavbarClient({ navLinks }) {
             >
                 <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5">
 
-                    {navLinks.map((item) => {
+                    {navLinks?.map((item) => {
                         const active = isActive(item.href);
 
                         return (

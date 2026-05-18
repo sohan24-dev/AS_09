@@ -68,7 +68,7 @@ const WhyIdeaVault = () => {
 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {features.map((item, index) => (
+                    {features?.map((item, index) => (
                         <FeatureCard
                             key={index}
                             Icon={item.Icon}

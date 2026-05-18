@@ -30,7 +30,7 @@ const IdeaCard = ({ idea }) => {
                 </p>
 
                 <div className="flex flex-wrap gap-2">
-                    {idea.Tags?.map((tag, index) => (
+                    {idea?.Tags?.map((tag, index) => (
                         <span
                             key={index}
                             className="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 text-xs px-3 py-1 rounded-full"
