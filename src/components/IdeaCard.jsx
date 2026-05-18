@@ -54,11 +54,14 @@ const IdeaCard = ({ idea }) => {
 
                 </div>
 
-                <Link href={`/ideas/${idea._id}`}><div className="mt-auto pt-4">
-                    <button className="w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-zinc-200 transition">
+                <Link
+                    href={`/ideas/${idea._id}`}
+                    className="mt-auto pt-4 block"
+                >
+                    <div className="w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-xl font-semibold hover:bg-gray-800 dark:hover:bg-zinc-200 transition text-center cursor-pointer">
                         View Details
-                    </button>
-                </div></Link>
+                    </div>
+                </Link>
             </div>
         </div>
     );
