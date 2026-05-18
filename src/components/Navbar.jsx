@@ -13,7 +13,7 @@ export default async function Navbar() {
         headers: await headers(),
     });
 
-    console.log(session, 'session navber');
+    // console.log(session, 'session navber');
     const navigationItems = [
         { label: "Home", href: "/" },
         { label: "Ideas", href: "/ideas" },

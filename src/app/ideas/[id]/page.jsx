@@ -1,3 +1,5 @@
+import CommentInIdea from "@/components/CommentInIdea";
+import { commentData } from "@/lib/action";
 import { getSingleIdea } from "@/lib/data";
 import { AlertTriangle, DollarSign, Lightbulb, Tag, Target } from "lucide-react";
 import Image from "next/image";
@@ -12,7 +14,7 @@ const IdDetailsPage = async ({ params }) => {
 
         <div className="max-w-6xl mx-auto px-4 py-10">
 
-            {/* HERO */}
+
             <div className="relative w-full h-[420px] rounded-3xl overflow-hidden shadow-lg">
                 <Image
                     src={idea.ImageURL || "/placeholder.jpg"}
@@ -121,6 +123,7 @@ const IdDetailsPage = async ({ params }) => {
                     </div>
                 </div>
             </div>
+            <CommentInIdea idea={idea} commentData={commentData}></CommentInIdea>
         </div>
     );
 };

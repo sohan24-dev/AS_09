@@ -42,7 +42,7 @@ const LoginPage = () => {
             provider: "google",
         });
         if (data) {
-            toast.success('Login successfully')
+            // toast.success('Login successfully')
 
         }
         // console.log(data);

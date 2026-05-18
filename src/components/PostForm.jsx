@@ -1,14 +1,23 @@
 "use client";
 
-
+import React from "react";
+import toast from "react-hot-toast";
 
 const PostForm = ({ postdata }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        postdata(data)
-        // console.log("Submitted Data:", data);
+        if (data) {
+            postdata(data)
+            toast.success('Post successfully');
+            e.target.reset();
+            return;
+        }
+        else {
+            toast.error("In Post some Error")
+        }
+        console.log("Submitted Data:", data);
     };
 
     const inputStyle =
