@@ -63,6 +63,7 @@ const IdeaCard = ({ idea }) => {
                     </div>
                 </Link>
             </div>
+
         </div>
     );
 };
