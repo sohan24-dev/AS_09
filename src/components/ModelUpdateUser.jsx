@@ -13,8 +13,10 @@ import {
     Surface,
     TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 
 const ModelUpdateUser = ({ session }) => {
+    const router = useRouter();
 
     const onSubmit = async (e, close) => {
         e.preventDefault();
@@ -36,6 +38,7 @@ const ModelUpdateUser = ({ session }) => {
 
             toast.success("Profile updated successfully");
             close();
+            router.refresh()
         } catch (err) {
             toast.error("Something went wrong");
         }

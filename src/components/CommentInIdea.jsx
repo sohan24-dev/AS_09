@@ -1,17 +1,31 @@
 'use client'
 
+import { authClient } from "@/lib/auth-clients";
 import toast from "react-hot-toast";
 
-const CommentInIdea = ({ commentData, idea }) => {
+const CommentInIdea = ({ commentData, idea, token }) => {
+    // console.log(token, "comment token data");
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession();
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        const userName = session?.user?.name;
+        const email = session?.user?.email;
+        // console.log(email);
         const commentText = e.target.comment.value;
-        console.log(commentText);
+        // console.log(commentText);
         if (commentText) {
             commentData({
                 text: commentText,
-                ideaId: idea._id
-            });
+                ideaId: idea._id,
+                userName: userName,
+                email: email
+            }, token);
             toast.success("comment successfully");
             e.target.reset();
 

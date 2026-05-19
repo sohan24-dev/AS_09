@@ -7,7 +7,7 @@ const HomeideaPage = async () => {
     const ideas = await homepagedata()
     // console.log(ideas);
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-2">
             <h2 className="text-3xl font-medium mt-5 ml-5">Trending ideas</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
                 {

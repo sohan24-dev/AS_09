@@ -1,35 +1,59 @@
+
+
 import CommentInIdea from "@/components/CommentInIdea";
 import { commentData } from "@/lib/action";
+import { auth } from "@/lib/auth";
 import { getSingleIdea } from "@/lib/data";
 import { AlertTriangle, DollarSign, Lightbulb, Tag, Target } from "lucide-react";
+import { headers } from "next/headers";
 import Image from "next/image";
 
 
+export const metadata = {
+    title: "IdeaVault | details",
+    description: "Here you see your Idea details",
+};
+
+
 const IdDetailsPage = async ({ params }) => {
+
+
     const { id } = await params
     // console.log(id, 'params');
-    const idea = await getSingleIdea(id);
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token);
+    const idea = await getSingleIdea(id, token);
     // console.log(idea);
+    const tagsArray = Array.isArray(idea?.Tags)
+        ? idea.Tags
+        : typeof idea?.Tags === "string"
+            ? idea.Tags.split(",")
+            : [];
     return (
 
         <div className="max-w-6xl mx-auto px-4 py-10">
 
 
             <div className="relative w-full h-[420px] rounded-3xl overflow-hidden shadow-lg">
-                <Image
-                    src={idea.ImageURL || "/placeholder.jpg"}
-                    alt={idea.IdeaTitle}
-                    fill
-                    className="object-cover"
-                />
+                <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+                    <Image
+                        src={idea?.ImageURL || "/placeholder.jpg"}
+                        alt={idea?.IdeaTitle || "idea image"}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
 
                 <div className="absolute bottom-6 left-6 text-white">
                     <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm">
-                        {idea.Category}
+                        {idea?.Category}
                     </span>
                     <h1 className="text-3xl md:text-4xl font-bold mt-2">
-                        {idea.IdeaTitle}
+                        {idea?.IdeaTitle}
                     </h1>
                 </div>
             </div>
@@ -46,7 +70,7 @@ const IdDetailsPage = async ({ params }) => {
                             <Lightbulb size={18} /> Overview
                         </h2>
                         <p className="text-gray-600 dark:text-gray-300 mt-2 leading-relaxed">
-                            {idea.ShortDescription}
+                            {idea?.ShortDescription}
                         </p>
                     </div>
 
@@ -56,13 +80,13 @@ const IdDetailsPage = async ({ params }) => {
                             <Tag size={18} /> Tags
                         </h2>
 
-                        <div className="flex flex-wrap gap-2 mt-3">
-                            {idea?.Tags?.map((tag, i) => (
+                        <div className="flex flex-wrap gap-2">
+                            {tagsArray.map((tag, index) => (
                                 <span
-                                    key={i}
-                                    className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-gray-300"
+                                    key={index}
+                                    className="bg-gray-100 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 text-xs px-3 py-1 rounded-full"
                                 >
-                                    #{tag}
+                                    #{tag.trim()}
                                 </span>
                             ))}
                         </div>
@@ -74,7 +98,7 @@ const IdDetailsPage = async ({ params }) => {
                             <AlertTriangle size={18} /> Problem
                         </h2>
                         <p className="mt-2 text-gray-700 dark:text-gray-300">
-                            {idea.ProblemStatement}
+                            {idea?.ProblemStatement}
                         </p>
                     </div>
 
@@ -84,7 +108,7 @@ const IdDetailsPage = async ({ params }) => {
                             💡 Solution
                         </h2>
                         <p className="mt-2 text-gray-700 dark:text-gray-300">
-                            {idea.ProposedSolution || "No solution provided yet."}
+                            {idea?.ProposedSolution || "No solution provided yet."}
                         </p>
                     </div>
                 </div>
@@ -99,7 +123,7 @@ const IdDetailsPage = async ({ params }) => {
                             <span className="font-semibold">Budget</span>
                         </div>
                         <p className="text-2xl font-bold mt-2">
-                            ${idea.EstimatedBudget}
+                            ${idea?.EstimatedBudget}
                         </p>
                     </div>
 
@@ -110,7 +134,7 @@ const IdDetailsPage = async ({ params }) => {
                             <span className="font-semibold">Target Audience</span>
                         </div>
                         <p className="mt-2 text-gray-700 dark:text-gray-300">
-                            {idea.TargetAudience}
+                            {idea?.TargetAudience}
                         </p>
                     </div>
 
@@ -118,12 +142,12 @@ const IdDetailsPage = async ({ params }) => {
                     <div className="p-5 rounded-2xl shadow-sm border bg-white dark:bg-zinc-900">
                         <span className="text-sm text-gray-500">Category</span>
                         <p className="text-lg font-semibold">
-                            {idea.Category}
+                            {idea?.Category}
                         </p>
                     </div>
                 </div>
             </div>
-            <CommentInIdea idea={idea} commentData={commentData}></CommentInIdea>
+            <CommentInIdea idea={idea} commentData={commentData} token={token}></CommentInIdea>
         </div>
     );
 };

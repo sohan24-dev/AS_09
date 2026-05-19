@@ -16,10 +16,14 @@ export const getIdeaData = async () => {
 };
 
 
-export const getSingleIdea = async (id) => {
+export const getSingleIdea = async (id, token) => {
     try {
         const res = await fetch(`http://localhost:5000/ideadata/${id}`, {
             cache: "no-store",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         if (!res.ok) {
@@ -54,21 +58,23 @@ export const homepagedata = async () => {
 };
 
 
-export const homedatasingleId = async (id) => {
+
+export const getComment = async () => {
     try {
-        const res = await fetch(`http://localhost:5000/homedata/${id}`, {
-            cache: "no-store",
-        });
+        const res = await fetch("http://localhost:5000/comment");
 
         if (!res.ok) {
-            throw new Error("Failed to fetch idea");
+            throw new Error("Failed to fetch data");
         }
 
         const data = await res.json();
-
+        return data
+        // console.log(data);
         return data;
-
     } catch (error) {
-        // console.log(error);
+        // console.error(error);
     }
 };
+
+
+

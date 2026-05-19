@@ -1,23 +1,46 @@
 "use client";
 
-import React from "react";
+
+import { authClient } from "@/lib/auth-clients";
 import toast from "react-hot-toast";
 
-const PostForm = ({ postdata }) => {
+const PostForm = ({ postdata, token }) => {
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+        refetch //refetch the session
+    } = authClient.useSession()
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.target);
+
+        // first create data
         const data = Object.fromEntries(formData.entries());
-        if (data) {
-            postdata(data)
-            toast.success('Post successfully');
+
+        // then use data
+        const postInfo = {
+            ...data,
+            userName: session?.user?.name,
+            userEmail: session?.user?.email,
+        };
+
+        console.log(postInfo);
+
+        if (postInfo) {
+
+            postdata(postInfo, token);
+
+            toast.success("Post successfully");
+
             e.target.reset();
+
             return;
+
+        } else {
+            toast.error("In Post some Error");
         }
-        else {
-            toast.error("In Post some Error")
-        }
-        console.log("Submitted Data:", data);
     };
 
     const inputStyle =
@@ -41,29 +64,30 @@ const PostForm = ({ postdata }) => {
 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                    <input name="ideaTitle" placeholder="Idea Title" className={inputStyle} />
-                    <input name="shortDescription" placeholder="Short Description" className={inputStyle} />
+                    <input name="IdeaTitle" placeholder="Idea Title" className={inputStyle} />
+                    <input name="ShortDescription" placeholder="Short Description" className={inputStyle} />
 
-                    <select name="category" className={inputStyle}>
+                    <select name="Category" className={inputStyle}>
                         <option value="">Select Category</option>
                         <option value="Tech">Tech</option>
                         <option value="Health">Health</option>
                         <option value="AI">AI</option>
                         <option value="Education">Education</option>
+                        <option value="Education">Lifestyle</option>
                     </select>
 
-                    <input name="tags" placeholder="Tags (comma separated)" className={inputStyle} />
+                    <input name="Tags" placeholder="Tags (comma separated)" className={inputStyle} />
 
-                    <input name="imageURL" placeholder="Image URL" className={inputStyle} />
+                    <input name="ImageURL" placeholder="Image URL" className={inputStyle} />
                     <input
-                        name="estimatedBudget"
+                        name="EstimatedBudget"
                         type="number"
                         placeholder="Estimated Budget"
                         className={inputStyle}
                     />
 
                     <input
-                        name="targetAudience"
+                        name="TargetAudience"
                         placeholder="Target Audience"
                         className={`${inputStyle} sm:col-span-2`}
                     />
@@ -72,28 +96,28 @@ const PostForm = ({ postdata }) => {
 
                 <div className="space-y-4">
                     <textarea
-                        name="detailedDescription"
+                        name="DetailedDescription"
                         placeholder="Detailed Description"
-                        className={`${inputStyle} h-28 sm:h-32 resize-none`}
+                        className={`${inputStyle} h-18 sm:h-20 resize-none`}
                     />
 
                     <textarea
-                        name="problemStatement"
+                        name="ProblemStatement"
                         placeholder="Problem Statement"
-                        className={`${inputStyle} h-24 resize-none`}
+                        className={`${inputStyle} h-17 resize-none`}
                     />
 
                     <textarea
-                        name="proposedSolution"
+                        name="ProposedSolution"
                         placeholder="Proposed Solution"
-                        className={`${inputStyle} h-24 resize-none`}
+                        className={`${inputStyle} h-18 resize-none`}
                     />
                 </div>
 
 
                 <button
                     type="submit"
-                    className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-xl font-semibold hover:scale-[1.02] active:scale-[0.98] transition"
+                    className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-xl font-semibold hover:scale-[1.02] active:scale-[0.98] transition cursor-pointer"
                 >
                     Submit Idea
                 </button>

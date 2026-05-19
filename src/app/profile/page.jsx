@@ -1,17 +1,16 @@
-'use client'
+
 
 import ModelUpdateUser from '@/components/ModelUpdateUser';
+import { auth } from '@/lib/auth';
 import { authClient } from '@/lib/auth-clients';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 
 
-const ProfilePage = () => {
-    const {
-        data: session,
-        isPending, //loading state
-        error, //error object
-        refetch //refetch the session
-    } = authClient.useSession()
+const ProfilePage = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers() // you need to pass the headers object.
+    })
     return (
         <div className="flex justify-center mt-6 px-4">
 

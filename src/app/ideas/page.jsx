@@ -1,13 +1,15 @@
 import IdeaCard from "@/components/IdeaCard";
 import { getIdeaData } from "@/lib/data";
-import Image from "next/image";
 
-
+export const metadata = {
+    title: "IdeaVault | ideas",
+    description: "This is ideas for you",
+};
 const IdeasPage = async () => {
     const ideas = await getIdeaData()
     // console.log(ideas, "idea page");
     return (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 m-10">
+        <div className=" grid lg:grid-cols-3 sm:grid-cols-2 gap-3  m-10 ">
             {
                 ideas?.map((idea, idx) => <IdeaCard key={idx} idea={idea}></IdeaCard>)
             }

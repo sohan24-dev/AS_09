@@ -46,7 +46,7 @@ const ProfileDropdown = ({ session }) => {
                         variant="danger"
                         onPress={async () => {
                             await authClient.signOut();
-                            router.push("/login"); router.refresh();
+                            router.push("/login"); window.location.reload();
                         }}
                     >
                         <Label>Logout</Label>

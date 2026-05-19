@@ -1,13 +1,19 @@
+'use client'
+
 import { DollarSign, Target } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import MyideaDelete from "./MyideaDelete";
+import MyideaEdit from "./MyideaEdit";
 
-const IdeaCard = ({ idea }) => {
+
+const Myidea = ({ idea, handleDelete }) => {
     const tagsArray = Array.isArray(idea?.Tags)
         ? idea.Tags
         : typeof idea?.Tags === "string"
             ? idea.Tags.split(",")
             : [];
+    // console.log(idea.ideaTitle, "myideapage");
     return (
         <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-md overflow-hidden border border-gray-200 dark:border-zinc-800 hover:shadow-xl transition duration-300 flex flex-col h-full">
 
@@ -18,6 +24,15 @@ const IdeaCard = ({ idea }) => {
                     fill
                     className="object-cover"
                 />
+
+                {/* Action Buttons */}
+                <div className="absolute top-3 right-3 flex gap-2">
+
+                    <MyideaEdit idea={idea}></MyideaEdit>
+
+                    <MyideaDelete handleDelete={handleDelete} idea={idea}></MyideaDelete>
+
+                </div>
             </div>
 
             <div className="p-5 flex flex-col flex-1 space-y-4">
@@ -67,10 +82,10 @@ const IdeaCard = ({ idea }) => {
                         View Details
                     </div>
                 </Link>
-            </div>
 
+            </div>
         </div>
     );
 };
 
-export default IdeaCard;
+export default Myidea;
