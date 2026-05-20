@@ -1,6 +1,6 @@
 export const postData = async (data, token) => {
     'use server'
-    const res = await fetch("http://localhost:5000/ideadata", {
+    const res = await fetch("https://as-09-server.onrender.com/ideadata", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const postData = async (data, token) => {
 export const commentData = async (data, token) => {
     'use server';
 
-    const res = await fetch("http://localhost:5000/comment", {
+    const res = await fetch("https://as-09-server.onrender.com/comment", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const commentData = async (data, token) => {
 export const handleDelete = async (id, token) => {
     'use server'
     const res = await fetch(
-        `http://localhost:5000/idea/${id}`,
+        `https://as-09-server.onrender.com/idea/${id}`,
         {
             method: "DELETE",
             headers: {
@@ -47,7 +47,7 @@ export const handleDelete = async (id, token) => {
 export const handleDeleteComment = async (id, token) => {
     'use server'
     const res = await fetch(
-        `http://localhost:5000/comment/${id}`,
+        `https://as-09-server.onrender.com/comment/${id}`,
         {
             method: "DELETE",
             headers: {
@@ -66,7 +66,7 @@ export const handleDeleteComment = async (id, token) => {
 
 export const updateIdea = async (id, updatedData, token) => {
     "use server"
-    const res = await fetch(`http://localhost:5000/idea/${id}`, {
+    const res = await fetch(`https://as-09-server.onrender.com/idea/${id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -86,7 +86,7 @@ export const updateIdea = async (id, updatedData, token) => {
 export const updateComment = async (id, updatedData, token) => {
     "use server"
     // console.log(updatedData, "updatedData");
-    const res = await fetch(`http://localhost:5000/comment/${id}`, {
+    const res = await fetch(`https://as-09-server.onrender.com/comment/${id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",

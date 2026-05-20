@@ -1,6 +1,6 @@
 export const getIdeaData = async () => {
     try {
-        const res = await fetch("http://localhost:5000/ideadata");
+        const res = await fetch("https://as-09-server.onrender.com/ideadata");
 
         if (!res.ok) {
             throw new Error("Failed to fetch data");
@@ -18,7 +18,7 @@ export const getIdeaData = async () => {
 
 export const getSingleIdea = async (id, token) => {
     try {
-        const res = await fetch(`http://localhost:5000/ideadata/${id}`, {
+        const res = await fetch(`https://as-09-server.onrender.com/ideadata/${id}`, {
             cache: "no-store",
             headers: {
                 "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export const getSingleIdea = async (id, token) => {
 
 export const homepagedata = async () => {
     try {
-        const res = await fetch("http://localhost:5000/homedata");
+        const res = await fetch("https://as-09-server.onrender.com/homedata");
 
         if (!res.ok) {
             throw new Error("Failed to fetch data");
@@ -61,7 +61,7 @@ export const homepagedata = async () => {
 
 export const getComment = async () => {
     try {
-        const res = await fetch("http://localhost:5000/comment");
+        const res = await fetch("https://as-09-server.onrender.com/comment");
 
         if (!res.ok) {
             throw new Error("Failed to fetch data");
