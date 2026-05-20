@@ -1,17 +1,59 @@
 "use client";
 
+import { authClient } from "@/lib/auth-clients";
 import {
     Button,
     Modal,
     Surface,
+    useOverlayState,
 } from "@heroui/react";
 import {
     Pencil,
-    Lightbulb,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-const MyideaEdit = ({ idea }) => {
+const MyideaEdit = ({ idea, updateIdea }) => {
     // console.log(idea);
+
+    const state = useOverlayState();
+    const router = useRouter()
+    const handleEditIdea = async (e) => {
+        e.preventDefault();
+        const tokenData = await authClient.token();
+        // console.log(tokenData?.data?.token);
+        const token = tokenData?.data?.token;
+
+        const form = e.target;
+
+        const formData = new FormData(form);
+
+        const updatedIdea = Object.fromEntries(formData.entries());
+
+        // console.log(updatedIdea);
+        const result = await updateIdea(
+            idea._id,
+            updatedIdea,
+            token
+        );
+        // console.log(data);
+        if (result.modifiedCount > 0) {
+            state.close();
+            toast.success("Idea Updated Successfully");
+            router.refresh()
+        }
+        else {
+            toast.error("Plz frist change any text")
+        }
+        // console.log(result);
+
+
+
+    }
+
+
+
+
     const inputStyle =
         "w-full px-4 py-3 rounded-2xl border border-gray-200 dark:border-zinc-700 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md text-sm md:text-base text-gray-800 dark:text-gray-200 outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all duration-300 placeholder:text-gray-400";
 
@@ -19,7 +61,7 @@ const MyideaEdit = ({ idea }) => {
         `${inputStyle} resize-none`;
 
     return (
-        <Modal>
+        <Modal state={state}>
 
             <Button
                 variant="secondary"
@@ -39,7 +81,10 @@ const MyideaEdit = ({ idea }) => {
                                 variant="default"
                                 className="bg-transparent"
                             >
-                                <form className="w-full">
+                                <form
+                                    onSubmit={handleEditIdea}
+                                    className="w-full"
+                                >
 
                                     <div className="p-5 sm:p-8 md:p-10 space-y-7">
 
@@ -192,19 +237,21 @@ const MyideaEdit = ({ idea }) => {
 
                                         <div className="flex flex-col sm:flex-row gap-3 sm:justify-end pt-2">
 
-                                            <button slot="close" variant="secondary"
-
-                                                className="px-6 py-3 rounded-2xl border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-zinc-800 transition-all duration-300 cursor-pointer"
+                                            <Button
+                                                slot="close"
+                                                variant="secondary"
+                                                className="px-6 py-3 rounded-2xl border border-gray-300 dark:border-zinc-700"
                                             >
                                                 Cancel
-                                            </button>
+                                            </Button>
 
-                                            <button
+                                            <Button
                                                 type="submit"
-                                                className="px-7 py-3 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-semibold hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                                                className="px-7 py-3 rounded-2xl bg-black dark:bg-white text-white dark:text-black font-semibold"
                                             >
                                                 Update Idea
-                                            </button>
+                                            </Button>
+
                                         </div>
                                     </div>
                                 </form>

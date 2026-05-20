@@ -7,7 +7,7 @@ import MyideaDelete from "./MyideaDelete";
 import MyideaEdit from "./MyideaEdit";
 
 
-const Myidea = ({ idea, handleDelete }) => {
+const Myidea = ({ idea, handleDelete, updateIdea }) => {
     const tagsArray = Array.isArray(idea?.Tags)
         ? idea.Tags
         : typeof idea?.Tags === "string"
@@ -28,7 +28,7 @@ const Myidea = ({ idea, handleDelete }) => {
                 {/* Action Buttons */}
                 <div className="absolute top-3 right-3 flex gap-2">
 
-                    <MyideaEdit idea={idea}></MyideaEdit>
+                    <MyideaEdit updateIdea={updateIdea} idea={idea}></MyideaEdit>
 
                     <MyideaDelete handleDelete={handleDelete} idea={idea}></MyideaDelete>
 

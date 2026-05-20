@@ -1,4 +1,5 @@
 import RegisterPage from "@/components/Register";
+import { Suspense } from "react";
 
 
 
@@ -8,7 +9,7 @@ export const metadata = {
 };
 
 const Register = () => {
-    return <RegisterPage></RegisterPage>;
+    return <Suspense><RegisterPage></RegisterPage></Suspense>;
 };
 
 export default Register;

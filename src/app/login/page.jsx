@@ -1,4 +1,5 @@
 import LoginForm from "@/components/LoginForm";
+import { Suspense } from "react";
 
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 };
 
 const LoginPage = () => {
-    return <LoginForm />;
+    return <Suspense><LoginForm /></Suspense>;
 };
 
 export default LoginPage;

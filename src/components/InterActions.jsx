@@ -3,7 +3,8 @@ import CommentDelete from "./CommentDelete";
 import CommentEdit from "./CommentEdit";
 
 
-const InterActions = ({ comment, handleDeleteComment }) => {
+const InterActions = ({ comment, handleDeleteComment, updateComment }) => {
+    // console.log(updateComment);
     return (
         <div
             key={comment._id || index}
@@ -20,7 +21,7 @@ const InterActions = ({ comment, handleDeleteComment }) => {
 
 
 
-                    <CommentEdit comment={comment}></CommentEdit>
+                    <CommentEdit updateComment={updateComment} comment={comment}></CommentEdit>
 
                     <CommentDelete handleDeleteComment={handleDeleteComment} comment={comment}></CommentDelete>
 

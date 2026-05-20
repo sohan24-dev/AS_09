@@ -26,7 +26,7 @@ const PostForm = ({ postdata, token }) => {
             userEmail: session?.user?.email,
         };
 
-        console.log(postInfo);
+        // console.log(postInfo);
 
         if (postInfo) {
 

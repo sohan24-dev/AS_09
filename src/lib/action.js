@@ -61,3 +61,39 @@ export const handleDeleteComment = async (id, token) => {
     return data
     // console.log(data);
 };
+
+
+
+export const updateIdea = async (id, updatedData, token) => {
+    "use server"
+    const res = await fetch(`http://localhost:5000/idea/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(updatedData),
+    });
+
+    const data = await res.json();
+
+
+
+    return data;
+
+
+};
+export const updateComment = async (id, updatedData, token) => {
+    "use server"
+    // console.log(updatedData, "updatedData");
+    const res = await fetch(`http://localhost:5000/comment/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ updatedData }),
+    });
+
+    return await res.json();
+};

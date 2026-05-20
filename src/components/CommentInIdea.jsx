@@ -46,7 +46,7 @@ const CommentInIdea = ({ commentData, idea, token }) => {
                     placeholder="Write your comment..."
                     name="comment"
                     className="w-full px-3 py-2 border rounded-lg outline-none dark:bg-zinc-800"
-                    rows={4}
+                    rows={2}
                 />
 
                 <button

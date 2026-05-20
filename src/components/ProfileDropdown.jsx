@@ -33,7 +33,7 @@ const ProfileDropdown = ({ session }) => {
             </Button>
 
             <Dropdown.Popover>
-                <Dropdown.Menu onAction={(key) => console.log(key)}>
+                <Dropdown.Menu>
                     <Dropdown.Item id="profile" textValue="Profile">
                         <Link href="/profile">
                             <Label>Profile</Label>
