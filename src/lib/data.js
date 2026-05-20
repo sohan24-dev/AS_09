@@ -8,8 +8,7 @@ export const getIdeaData = async () => {
 
         const data = await res.json();
         return data
-        // console.log(data);
-        return data;
+
     } catch (error) {
         // console.error(error);
     }
@@ -76,5 +75,11 @@ export const getComment = async () => {
     }
 };
 
-
-
+export const filterIdea = async (search, category = "") => {
+    const res = await fetch(
+        `https://as-09-server.onrender.com/ideafilter?search=${search, category}`,
+        { cache: "no-store" }
+    );
+    // console.log(res, "res filter");
+    return res.json();
+};
