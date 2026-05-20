@@ -59,28 +59,7 @@ const CommentInIdea = ({ commentData, idea, token }) => {
             </form>
 
 
-            {/* <div className="space-y-3">
-                {comments.length === 0 ? (
-                    <p className="text-gray-500">No comments yet.</p>
-                ) : (
-                    comments.map((c, i) => (
-                        <div
-                            key={i}
-                            className="p-4 rounded-xl border bg-gray-50 dark:bg-zinc-800"
-                        >
-                            <div className="flex justify-between">
-                                <h4 className="font-semibold">{c.name}</h4>
-                                <span className="text-xs text-gray-500">
-                                    {c.createdAt}
-                                </span>
-                            </div>
-                            <p className="mt-2 text-gray-700 dark:text-gray-300">
-                                {c.text}
-                            </p>
-                        </div>
-                    ))
-                )}
-            </div> */}
+            <div>need here comment show</div>
         </div>
     );
 };

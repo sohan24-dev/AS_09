@@ -75,9 +75,9 @@ export const getComment = async () => {
     }
 };
 
-export const filterIdea = async (search, category = "") => {
+export const filterIdea = async (search = "", category = "") => {
     const res = await fetch(
-        `https://as-09-server.onrender.com/ideafilter?search=${search, category}`,
+        `http://localhost:5000/ideafilter?search=${search, category}`,
         { cache: "no-store" }
     );
     // console.log(res, "res filter");
