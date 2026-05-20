@@ -28,7 +28,7 @@ const MyCommentsPage = async () => {
 
     return (
         <div className="container mx-auto">
-            <h2 className="text-2xl font-medium mt-3">Total comment : {myComments.length}</h2>
+            {myComments && <h2 className="text-2xl font-medium mt-3">Total comment : {myComments.length}</h2>}
             {myComments.length === 0 ? (
                 <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
                     <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
