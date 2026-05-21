@@ -16,12 +16,13 @@ export default function Footer() {
                     {/* BRAND */}
                     <div>
                         <div className="flex items-center gap-2">
-                            <div className="p-2 rounded-xl bg-black dark:bg-white text-white dark:text-black">
-                                <Lightbulb size={18} />
+                            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-linear-to-br from-violet-600 via-blue-500 to-cyan-400">
+                                <Lightbulb className="h-5 w-5 text-white" />
                             </div>
-                            <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                                IdeaHub
-                            </h2>
+
+                            <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+                                IdeaVault
+                            </h1>
                         </div>
 
                         <p className="mt-4 text-sm leading-6 text-zinc-600 dark:text-zinc-400">

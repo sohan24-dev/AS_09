@@ -64,7 +64,7 @@ const IdeaSearch = () => {
                 <button
                     type="submit"
                     className="px-5 py-2 rounded-lg bg-blue-600 
-            text-white hover:bg-blue-700 transition"
+            text-white hover:bg-blue-700 transition cursor-pointer"
                 >
                     Search
                 </button>

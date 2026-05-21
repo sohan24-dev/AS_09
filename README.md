@@ -60,11 +60,6 @@ project-root/
 git clone https://github.com/sohan24-dev/AS_09
 ```
 
-### Navigate to project folder
-
-```bash
-cd your-repo-name
-```
 
 ### Install dependencies
 

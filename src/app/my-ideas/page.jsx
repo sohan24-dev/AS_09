@@ -37,7 +37,7 @@ const MyIdeaPage = async () => {
             )}
 
             {myIdeas.length === 0 ? (
-                <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4">
                     <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
                         No Ideas Found
                     </h2>
