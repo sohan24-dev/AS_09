@@ -6,6 +6,7 @@ import IndeCommentShow from "./IndeCommentShow";
 import { useState } from "react";
 
 const CommentInIdea = ({ commentData, idea, token, handleDeleteComment, updateComment }) => {
+
     const [refresh, setRefresh] = useState(false);
     // console.log(token, "comment token data");
     const {
@@ -31,6 +32,8 @@ const CommentInIdea = ({ commentData, idea, token, handleDeleteComment, updateCo
             }, token);
             toast.success("comment successfully");
             e.target.reset();
+
+
             setTimeout(() => {
                 setRefresh(prev => !prev);
             }, 500);

@@ -27,27 +27,29 @@ const MyCommentsPage = async () => {
     // console.log("myComments:", myComments);
 
     return (
-        <div className="container mx-auto">
-            {myComments.length > 0 && (
-                <h2 className="text-2xl font-medium mt-3">
-                    Total comments: {myComments.length}
-                </h2>
-            )}
-            {myComments.length === 0 ? (
-                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4">
-                    <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
-                        No Commnet Found
+        <div className="max-w-7xl mx-auto">
+            <div className="mx-4 mt-7">
+                {myComments.length > 0 && (
+                    <h2 className="text-2xl font-medium mt-3">
+                        Total comments: {myComments.length}
                     </h2>
+                )}
+                {myComments.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center min-h-[50vh] text-center px-4">
+                        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">
+                            No Commnet Found
+                        </h2>
 
-                    <p className="mt-3 text-gray-500 dark:text-gray-400 max-w-md">
-                        You haven't added any comment yet. Start sharing your creative comment and projects.
-                    </p>
-                </div>
-            ) : (
-                myComments.map((c, idx) => (
-                    <InterActions handleDeleteComment={handleDeleteComment} myComments={myComments} updateComment={updateComment} key={idx} comment={c}></InterActions>
-                ))
-            )}
+                        <p className="mt-3 text-gray-500 dark:text-gray-400 max-w-md">
+                            You haven't added any comment yet. Start sharing your creative comment and projects.
+                        </p>
+                    </div>
+                ) : (
+                    myComments.map((c, idx) => (
+                        <InterActions handleDeleteComment={handleDeleteComment} myComments={myComments} updateComment={updateComment} key={idx} comment={c}></InterActions>
+                    ))
+                )}
+            </div>
         </div>
     );
 };

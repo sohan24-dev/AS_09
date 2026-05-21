@@ -43,7 +43,7 @@ export default async function Navbar() {
 
                 <div className="hidden lg:flex items-center gap-2">
 
-
+                    <ThemeSwitch />
                     {session?.user ? (
                         <>
                             <ProfileDropdown session={session} />
@@ -79,7 +79,7 @@ export default async function Navbar() {
                     )}
 
 
-                    <ThemeSwitch />
+
                 </div>
 
             </nav>

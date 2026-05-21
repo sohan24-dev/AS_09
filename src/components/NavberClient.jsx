@@ -51,13 +51,14 @@ export default function NavbarClient({ navLinks }) {
 
 
             <div className="flex lg:hidden items-center gap-2">
+
                 <button
                     onClick={() => setOpen(!open)}
                     className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/20 bg-white/10 dark:bg-white/5 text-slate-900 dark:text-white"
                 >
                     {open ? <X size={18} /> : <Menu size={18} />}
                 </button>
-
+                <ThemeSwitch />
                 {session?.user ? (
                     <>
                         <ProfileDropdown session={session} />
@@ -93,7 +94,7 @@ export default function NavbarClient({ navLinks }) {
                 )}
 
 
-                <ThemeSwitch />
+
             </div>
 
 
