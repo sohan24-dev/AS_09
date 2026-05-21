@@ -14,7 +14,7 @@ const ProfileDropdown = ({ session }) => {
     // console.log(session, "session profile");
 
     return (
-        <Dropdown placement="right-bottom">
+        <Dropdown placement="">
             <Button
                 variant="secondary"
                 className="flex items-center gap-2 px-2 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10"
@@ -32,7 +32,7 @@ const ProfileDropdown = ({ session }) => {
                 <FaAngleDown className="text-xs text-slate-300" />
             </Button>
 
-            <Dropdown.Popover>
+            <Dropdown.Popover placement="bottom right">
                 <Dropdown.Menu>
                     <Dropdown.Item id="profile" textValue="Profile">
                         <Link href="/profile">

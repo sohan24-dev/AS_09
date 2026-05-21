@@ -31,7 +31,7 @@ const MyIdeaPage = async () => {
         <div className="max-w-7xl mx-auto">
 
             {myIdeas.length > 0 && (
-                <h2 className="text-2xl font-medium mt-3">
+                <h2 className="text-2xl font-medium mt-3 ml-3">
                     Your Total ideas: {myIdeas.length}
                 </h2>
             )}
@@ -47,7 +47,7 @@ const MyIdeaPage = async () => {
                     </p>
                 </div>
             ) : (
-                <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-3 mt-6 px-2">
+                <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-3 my-6 px-2 ">
                     {myIdeas.map((idea) => (
                         <Myidea
                             key={idea._id}
