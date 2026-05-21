@@ -84,7 +84,7 @@ export const filterIdea = async (search = "", category = "") => {
     if (category) params.append("category", category);
 
     const res = await fetch(
-        `http://localhost:5000/ideafilter?${params.toString()}`,
+        `https://as-09-server.onrender.com/ideafilter?${params.toString()}`,
         { cache: "no-store" }
     );
 
