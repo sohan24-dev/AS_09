@@ -30,7 +30,7 @@ const items = [
 
 export function CustomStyles() {
     return (
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto mb-7">
             <div className="w-full px-4 sm:px-6 lg:px-8">
 
                 <Accordion
