@@ -60,7 +60,9 @@ export const homepagedata = async () => {
 
 export const getComment = async () => {
     try {
-        const res = await fetch("https://as-09-server.onrender.com/comment");
+        const res = await fetch("https://as-09-server.onrender.com/comment", {
+            cache: "no-store",
+        });
 
         if (!res.ok) {
             throw new Error("Failed to fetch data");

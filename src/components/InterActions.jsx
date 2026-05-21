@@ -3,11 +3,11 @@ import CommentDelete from "./CommentDelete";
 import CommentEdit from "./CommentEdit";
 
 
-const InterActions = ({ comment, handleDeleteComment, updateComment, myComments }) => {
+const InterActions = ({ comment, handleDeleteComment, updateComment }) => {
     // console.log(updateComment);
     return (
         <div>
-            {myComments && <h2 className="text-2xl font-medium mt-3">Total comment : {myComments.length}</h2>}
+
             <div
                 key={comment._id || index}
                 className="p-3 border rounded-xl bg-white dark:bg-white/5 mt-4"

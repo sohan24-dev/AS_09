@@ -3,8 +3,10 @@
 import { authClient } from "@/lib/auth-clients";
 import toast from "react-hot-toast";
 import IndeCommentShow from "./IndeCommentShow";
+import { useState } from "react";
 
-const CommentInIdea = ({ commentData, idea, token }) => {
+const CommentInIdea = ({ commentData, idea, token, handleDeleteComment }) => {
+    const [refresh, setRefresh] = useState(false);
     // console.log(token, "comment token data");
     const {
         data: session,
@@ -29,6 +31,9 @@ const CommentInIdea = ({ commentData, idea, token }) => {
             }, token);
             toast.success("comment successfully");
             e.target.reset();
+            setTimeout(() => {
+                setRefresh(prev => !prev);
+            }, 500);
 
         }
     };
@@ -60,7 +65,7 @@ const CommentInIdea = ({ commentData, idea, token }) => {
             </form>
 
 
-            <IndeCommentShow></IndeCommentShow>
+            <IndeCommentShow handleDeleteComment={handleDeleteComment} refresh={refresh} idea={idea}></IndeCommentShow>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 
 
 import CommentInIdea from "@/components/CommentInIdea";
-import { commentData } from "@/lib/action";
+import { commentData, handleDeleteComment } from "@/lib/action";
 import { auth } from "@/lib/auth";
 import { getSingleIdea } from "@/lib/data";
 import { AlertTriangle, DollarSign, Lightbulb, Tag, Target } from "lucide-react";
@@ -147,7 +147,7 @@ const IdDetailsPage = async ({ params }) => {
                     </div>
                 </div>
             </div>
-            <CommentInIdea idea={idea} commentData={commentData} token={token}></CommentInIdea>
+            <CommentInIdea handleDeleteComment={handleDeleteComment} idea={idea} commentData={commentData} token={token}></CommentInIdea>
         </div>
     );
 };
