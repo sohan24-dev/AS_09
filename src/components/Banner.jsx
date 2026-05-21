@@ -9,20 +9,25 @@ import "swiper/css/pagination";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Rocket, Lightbulb, Sparkles } from "lucide-react";
+
 const banners = [
     {
+        icon: Rocket,
         image: "https://i.ibb.co.com/rK8Fm5TJ/Screenshot-2026-05-17-215110.png",
-        title: "Turn Your Startup Ideas Into Reality ",
+        title: "Turn Your Startup Ideas Into Reality",
         desc: "Share innovative ideas, explore new startups, and build the future together with the community.",
     },
     {
+        icon: Lightbulb,
         image: "https://i.ibb.co.com/GQmBtZjk/Screenshot-2026-05-17-215058.png",
-        title: "Discover & Validate Startup Ideas 💡",
+        title: "Discover & Validate Startup Ideas",
         desc: "Get feedback, improve your ideas, and connect with like-minded innovators.",
     },
     {
+        icon: Sparkles,
         image: "https://i.ibb.co.com/zhsqjN56/Screenshot-2026-05-17-215044.png",
-        title: "Build The Future With Innovation ⚡",
+        title: "Build The Future With Innovation",
         desc: "A community-driven platform where ideas meet execution and collaboration.",
     },
 ];
@@ -43,42 +48,56 @@ const Banner = () => {
                 className="h-[260px] sm:h-[340px] md:h-[450px]"
             >
 
-                {banners?.map((item, index) => (
-                    <SwiperSlide key={index}>
-                        <div className="relative w-full h-[260px] sm:h-[340px] md:h-[450px]">
+                {banners.map((item, index) => {
+                    const Icon = item.icon;
 
-                            <Image
-                                src={item.image}
-                                alt={`banner-${index}`}
-                                fill
-                                className="object-cover"
-                            />
+                    return (
+                        <SwiperSlide key={index}>
+                            <div className="relative w-full h-[260px] sm:h-[340px] md:h-[450px]">
 
+                                <Image
+                                    src={item.image}
+                                    alt={`banner-${index}`}
+                                    fill
+                                    className="object-cover"
+                                />
 
-                            <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent flex items-center">
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
 
-                                <div className="px-6 md:px-12 max-w-xl text-white">
+                                    <div className="px-6 md:px-12 max-w-2xl text-center text-white">
 
-                                    <h2 className="text-xl sm:text-2xl md:text-4xl font-bold leading-tight">
-                                        {item.title}
-                                    </h2>
+                                        {/* Icon */}
+                                        <div className="flex justify-center mb-4">
+                                            <div className="p-3 rounded-full bg-white/10 backdrop-blur-md">
+                                                <Icon className="w-7 h-7 text-blue-400" />
+                                            </div>
+                                        </div>
 
-                                    <p className="mt-3 text-sm sm:text-base text-slate-200">
-                                        {item.desc}
-                                    </p>
+                                        {/* Big Title */}
+                                        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold leading-tight">
+                                            {item.title}
+                                        </h2>
 
-                                    <Link
-                                        href="/ideas"
-                                        className="inline-block mt-5 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 transition font-semibold text-white"
-                                    >
-                                        Explore Ideas
-                                    </Link>
+                                        {/* Subtitle */}
+                                        <p className="mt-3 text-sm sm:text-base text-slate-200">
+                                            {item.desc}
+                                        </p>
 
+                                        {/* CTA */}
+                                        <Link
+                                            href="/ideas"
+                                            className="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 transition font-semibold text-white"
+                                        >
+                                            Explore Ideas
+                                        </Link>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
+                        </SwiperSlide>
+                    );
+                })}
 
             </Swiper>
         </div>
