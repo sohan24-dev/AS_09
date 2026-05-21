@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import IndeCommentShow from "./IndeCommentShow";
 import { useState } from "react";
 
-const CommentInIdea = ({ commentData, idea, token, handleDeleteComment }) => {
+const CommentInIdea = ({ commentData, idea, token, handleDeleteComment, updateComment }) => {
     const [refresh, setRefresh] = useState(false);
     // console.log(token, "comment token data");
     const {
@@ -65,7 +65,7 @@ const CommentInIdea = ({ commentData, idea, token, handleDeleteComment }) => {
             </form>
 
 
-            <IndeCommentShow handleDeleteComment={handleDeleteComment} refresh={refresh} idea={idea}></IndeCommentShow>
+            <IndeCommentShow handleDeleteComment={handleDeleteComment} refresh={refresh} idea={idea} updateComment={updateComment}></IndeCommentShow>
         </div>
     );
 };

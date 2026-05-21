@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { getComment } from "@/lib/data";
-import CommentEdit from "./CommentEdit";
-import CommentDelete from "./CommentDelete";
 import IdeacommentDelete from "./IdeacommentDelete";
+import IdeaCommentEdit from "./IdeaCommentEdit";
 
-const IndeCommentShow = ({ refresh, idea, handleDeleteComment }) => {
+const IndeCommentShow = ({ refresh, idea, handleDeleteComment, updateComment }) => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -53,10 +52,7 @@ const IndeCommentShow = ({ refresh, idea, handleDeleteComment }) => {
                         </p>
 
                         <div className="flex items-center gap-5">
-                            <CommentEdit
-                                updateComment={() => { }}
-                                comment={comment}
-                            />
+                            <IdeaCommentEdit setComments={setComments} comment={comment} updateComment={updateComment}></IdeaCommentEdit>
 
                             <IdeacommentDelete setComments={setComments} handleDeleteComment={handleDeleteComment} comment={comment}></IdeacommentDelete>
                         </div>
