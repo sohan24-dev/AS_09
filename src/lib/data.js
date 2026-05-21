@@ -76,10 +76,15 @@ export const getComment = async () => {
 };
 
 export const filterIdea = async (search = "", category = "") => {
+    const params = new URLSearchParams();
+
+    if (search) params.append("search", search);
+    if (category) params.append("category", category);
+
     const res = await fetch(
-        `http://localhost:5000/ideafilter?search=${search, category}`,
+        `http://localhost:5000/ideafilter?${params.toString()}`,
         { cache: "no-store" }
     );
-    // console.log(res, "res filter");
+
     return res.json();
-};
+}

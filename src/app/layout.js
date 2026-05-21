@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <NextThemeProviders>
           <Navbar></Navbar>
-          <main> {children}</main>
+          <main className="flex-1"> {children}</main>
           <Footer></Footer>
           <Toaster
             position="top-right"

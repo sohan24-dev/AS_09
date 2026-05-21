@@ -10,7 +10,7 @@ const IdeasPage = async ({ searchParams }) => {
     const sparams = await searchParams;
     const search = sparams?.search || "";
     const category = sparams?.category || "";
-    console.log(category, "sparams");
+    // console.log(category, "sparams");
 
 
     // const ideas = await getIdeaData();

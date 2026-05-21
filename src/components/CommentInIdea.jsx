@@ -2,6 +2,7 @@
 
 import { authClient } from "@/lib/auth-clients";
 import toast from "react-hot-toast";
+import IndeCommentShow from "./IndeCommentShow";
 
 const CommentInIdea = ({ commentData, idea, token }) => {
     // console.log(token, "comment token data");
@@ -59,7 +60,7 @@ const CommentInIdea = ({ commentData, idea, token }) => {
             </form>
 
 
-            <div>need here comment show</div>
+            <IndeCommentShow></IndeCommentShow>
         </div>
     );
 };

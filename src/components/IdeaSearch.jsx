@@ -9,11 +9,20 @@ const IdeaSearch = () => {
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
 
-    const updateURL = (newSearch = search, newCategory = category) => {
+
+    const updateURL = (
+        newSearch = search,
+        newCategory = category
+    ) => {
         const query = new URLSearchParams();
 
-        if (newSearch) query.append("search", newSearch);
-        if (newCategory) query.append("category", newCategory);
+        if (newSearch.trim()) {
+            query.set("search", newSearch);
+        }
+
+        if (newCategory.trim()) {
+            query.set("category", newCategory);
+        }
 
         router.push(`/ideas?${query.toString()}`);
     };
@@ -23,34 +32,41 @@ const IdeaSearch = () => {
         updateURL();
     };
 
+
     const handleCategoryChange = (e) => {
         const value = e.target.value;
+
         setCategory(value);
+
         updateURL(search, value);
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-3 mb-6 p-4 bg-white rounded-xl shadow-sm border border-gray-200">
-
-
+        <div
+            className="flex flex-col md:flex-row gap-3 mb-6 
+            p-4 bg-white rounded-xl shadow-sm border border-gray-200"
+        >
+            {/* Search Form */}
             <form
                 onSubmit={handleSearch}
                 className="flex flex-1 gap-2"
             >
                 <input
                     type="text"
-                    placeholder="Search ideas by title..."
+                    placeholder="Search ideas..."
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="flex-1 px-4 py-2 rounded-lg border border-gray-300 
-                               focus:outline-none focus:ring-2 focus:ring-blue-400
-                               transition"
+                    onChange={(e) =>
+                        setSearch(e.target.value)
+                    }
+                    className="flex-1 px-4 py-2 rounded-lg border 
+                    border-gray-300 focus:outline-none 
+                    focus:ring-2 focus:ring-blue-400"
                 />
 
                 <button
                     type="submit"
-                    className="px-5 py-2 rounded-lg bg-blue-600 text-white font-medium
-                               hover:bg-blue-700 active:scale-95 transition"
+                    className="px-5 py-2 rounded-lg bg-blue-600 
+                    text-white hover:bg-blue-700 transition"
                 >
                     Search
                 </button>
@@ -60,10 +76,8 @@ const IdeaSearch = () => {
             <select
                 value={category}
                 onChange={handleCategoryChange}
-                className="px-4 py-2 rounded-lg border border-gray-300 
-                           bg-white text-gray-700
-                           focus:outline-none focus:ring-2 focus:ring-blue-400
-                           transition md:w-48"
+                className="px-4 py-2 rounded-lg border border-gray-300
+                focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
                 <option value="">All Categories</option>
                 <option value="ai">AI</option>
@@ -72,7 +86,6 @@ const IdeaSearch = () => {
                 <option value="health">Health</option>
                 <option value="education">Education</option>
             </select>
-
         </div>
     );
 };

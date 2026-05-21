@@ -1,14 +1,16 @@
+"use client"
 
+import { getComment } from "@/lib/data";
 
 // import { getComment } from "@/lib/data";
 
 
-const IndeCommentShow = ({ commentData }) => {
+const IndeCommentShow = () => {
 
-    // const comment = await getComment()
+    const comment = getComment()
     return (
         <div>
-            comment {commentData.length}
+            comments {comment.length}
         </div>
     );
 };
