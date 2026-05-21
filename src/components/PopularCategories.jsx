@@ -58,7 +58,7 @@ const categories = [
 
 const PopularCategories = () => {
     return (
-        <section className="w-full py-12 ">
+        <section className="w-full py-12 px-4">
             <div className="max-w-7xl mx-auto">
 
                 {/* Heading */}

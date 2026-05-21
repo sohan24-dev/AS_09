@@ -30,7 +30,7 @@ const items = [
 
 export function CustomStyles() {
     return (
-        <div className="max-w-7xl mx-auto mb-7">
+        <div className="max-w-7xl mx-auto mb-7 ">
             <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
                     Why Is This a Good Choice for You?
@@ -43,7 +43,7 @@ export function CustomStyles() {
             </div>
 
 
-            <div className="w-full">
+            <div className="w-full px-4">
 
                 <Accordion
                     className="
