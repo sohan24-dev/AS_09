@@ -29,7 +29,7 @@ const RegisterPage = () => {
             return;
         }
         else {
-            toast.success("Login successfully")
+            toast.success("Register successfully")
         }
 
         // console.log(session);

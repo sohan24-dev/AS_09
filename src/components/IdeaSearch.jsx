@@ -44,40 +44,40 @@ const IdeaSearch = () => {
     return (
         <div
             className="flex flex-col md:flex-row gap-3 mb-6 
-            p-4 bg-white rounded-xl shadow-sm border border-gray-200"
+    p-4 bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700"
         >
-            {/* Search Form */}
-            <form
-                onSubmit={handleSearch}
-                className="flex flex-1 gap-2"
-            >
+
+            <form onSubmit={handleSearch} className="flex flex-1 gap-2">
                 <input
                     type="text"
                     placeholder="Search ideas..."
                     value={search}
-                    onChange={(e) =>
-                        setSearch(e.target.value)
-                    }
+                    onChange={(e) => setSearch(e.target.value)}
                     className="flex-1 px-4 py-2 rounded-lg border 
-                    border-gray-300 focus:outline-none 
-                    focus:ring-2 focus:ring-blue-400"
+            border-gray-300 dark:border-gray-600 
+            bg-white dark:bg-gray-800
+            text-gray-900 dark:text-white
+            placeholder-gray-400 dark:placeholder-gray-500
+            focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
 
                 <button
                     type="submit"
                     className="px-5 py-2 rounded-lg bg-blue-600 
-                    text-white hover:bg-blue-700 transition"
+            text-white hover:bg-blue-700 transition"
                 >
                     Search
                 </button>
             </form>
 
-
             <select
                 value={category}
                 onChange={handleCategoryChange}
-                className="px-4 py-2 rounded-lg border border-gray-300
-                focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="px-4 py-2 rounded-lg border 
+        border-gray-300 dark:border-gray-600
+        bg-white dark:bg-gray-800
+        text-gray-900 dark:text-white
+        focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
                 <option value="">All Categories</option>
                 <option value="ai">AI</option>

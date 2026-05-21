@@ -19,7 +19,7 @@ export default async function Navbar() {
         { label: "Ideas", href: "/ideas" },
         { label: "Add Idea", href: "/add-idea" },
         { label: "My Ideas", href: "/my-ideas" },
-        { label: "Interactions", href: "/my-interactions" },
+        { label: "My Interactions", href: "/my-interactions" },
     ];
 
     return (

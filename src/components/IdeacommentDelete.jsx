@@ -13,10 +13,14 @@ const IdeacommentDelete = ({ handleDeleteComment, comment, setComments }) => {
         // console.log(tokenData?.data?.token);
         const token = tokenData?.data?.token;
         // console.log(token, "token");
-        if (token) {
-            handleDeleteComment(id, token)
+        const result = await handleDeleteComment(id, token)
+        // console.log(result);
+        if (result.deletedCount > 0) {
             setComments((prev) => prev.filter((c) => c._id !== id));
             toast.success("Delete successfully")
+        }
+        else {
+            toast.error("You can only delete your own content.");
         }
     }
     return (

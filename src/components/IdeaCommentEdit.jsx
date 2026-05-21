@@ -47,7 +47,7 @@ const IdeaCommentEdit = ({ comment, updateComment, setComments }) => {
             );
         }
         else {
-            toast.error("plz change after upload")
+            toast.error("You can only edit your own content.");
         }
     };
 
