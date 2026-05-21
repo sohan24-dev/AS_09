@@ -31,7 +31,19 @@ const items = [
 export function CustomStyles() {
     return (
         <div className="max-w-7xl mx-auto mb-7">
-            <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
+                    Why Is This a Good Choice for You?
+                </h2>
+
+                <p className="mt-3 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto">
+                    Discover a modern platform designed to help creators organize ideas,
+                    collaborate smoothly, and build projects with confidence.
+                </p>
+            </div>
+
+
+            <div className="w-full">
 
                 <Accordion
                     className="

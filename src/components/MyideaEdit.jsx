@@ -73,7 +73,7 @@ const MyideaEdit = ({ idea, updateIdea }) => {
 
             <Modal.Backdrop className="bg-black/50 backdrop-blur-sm">
                 <Modal.Container placement="center">
-                    <Modal.Dialog className="w-full max-w-5xl mx-3 sm:mx-6 rounded-3xl overflow-hidden border border-white/10 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xl">
+                    <Modal.Dialog className="w-full max-w-7xl mx-3 sm:mx-6 rounded-3xl overflow-hidden border border-white/10 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xl">
                         <Modal.CloseTrigger />
 
                         <Modal.Body className="p-0">

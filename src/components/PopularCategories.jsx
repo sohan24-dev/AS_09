@@ -54,11 +54,11 @@ const categories = [
     },
 ];
 
-import React from 'react';
+
 
 const PopularCategories = () => {
     return (
-        <section className="w-full py-12 px-4 sm:px-6 lg:px-10">
+        <section className="w-full py-12 ">
             <div className="max-w-7xl mx-auto">
 
                 {/* Heading */}
