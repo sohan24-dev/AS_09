@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getComment } from "@/lib/data";
 import IdeacommentDelete from "./IdeacommentDelete";
 import IdeaCommentEdit from "./IdeaCommentEdit";
+import { MessageCircle } from "lucide-react";
 
 const IndeCommentShow = ({ refresh, idea, handleDeleteComment, updateComment }) => {
     const [comments, setComments] = useState([]);
@@ -36,7 +37,18 @@ const IndeCommentShow = ({ refresh, idea, handleDeleteComment, updateComment }) 
     }
 
     if (!comments.length) {
-        return <div className="text-sm text-gray-400">No comments yet</div>;
+        return <div className="flex flex-col items-center justify-center py-10 px-4 border border-dashed rounded-xl bg-gray-50 dark:bg-white/5">
+
+            <MessageCircle className="w-10 h-10 text-gray-400" />
+
+            <h3 className="mt-3 text-lg font-semibold text-gray-700 dark:text-white">
+                No comments yet
+            </h3>
+
+            <p className="text-sm text-gray-400 mt-1 text-center max-w-xs">
+                Be the first to add a comment and start the discussion.
+            </p>
+        </div>
     }
 
     return (
