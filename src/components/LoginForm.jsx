@@ -32,14 +32,15 @@ const LoginForm = () => {
         const { error } = await authClient.signIn.email({
             email,
             password,
+            callbackURL: "/"
         });
 
         if (error) {
             toast.error(error.message || "Login failed");
         } else {
             toast.success("Login successful");
-            router.refresh();
-            router.push(callbackUrl);
+
+
         }
     };
 
