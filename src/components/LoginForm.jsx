@@ -12,14 +12,14 @@ import {
     TextField,
 } from "@heroui/react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 const LoginForm = () => {
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-    const router = useRouter();
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
