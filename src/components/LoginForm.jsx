@@ -38,6 +38,7 @@ const LoginForm = () => {
             toast.error(error.message || "Login failed");
         } else {
             toast.success("Login successful");
+            router.refresh();
             router.push(callbackUrl);
         }
     };
