@@ -34,10 +34,10 @@ const ProfileDropdown = ({ session }) => {
 
             <Dropdown.Popover placement="bottom right">
                 <Dropdown.Menu>
-                    <Dropdown.Item id="profile" textValue="Profile">
-                        <Link href="/profile">
-                            <Label>Profile</Label>
-                        </Link>
+                    <Dropdown.Item onPress={() => router.push("/profile")} id="profile" textValue="Profile">
+
+                        <Label>Profile</Label>
+
                     </Dropdown.Item>
 
                     <Dropdown.Item
