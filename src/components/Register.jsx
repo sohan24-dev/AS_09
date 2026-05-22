@@ -4,9 +4,11 @@ import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const RegisterPage = () => {
+    const router = useRouter();
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -29,7 +31,9 @@ const RegisterPage = () => {
             return;
         }
         else {
-            toast.success("Register successfully")
+            toast.success("Register successfully");
+            router.push("/login")
+
         }
 
         // console.log(session);
