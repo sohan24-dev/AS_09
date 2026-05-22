@@ -38,7 +38,7 @@ const LoginForm = () => {
         if (error) {
             toast.error(error.message || "Login failed");
         } else {
-            toast.success("Login successful");
+            toast.success("Login successfully");
 
 
         }
