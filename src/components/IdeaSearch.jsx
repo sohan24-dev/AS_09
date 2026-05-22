@@ -85,6 +85,7 @@ const IdeaSearch = () => {
                 <option value="tech">Tech</option>
                 <option value="health">Health</option>
                 <option value="education">Education</option>
+                <option value="other">Other</option>
             </select>
         </div>
     );

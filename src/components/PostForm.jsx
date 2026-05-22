@@ -74,6 +74,7 @@ const PostForm = ({ postdata, token }) => {
                         <option value="AI">AI</option>
                         <option value="Education">Education</option>
                         <option value="Education">Lifestyle</option>
+                        <option value="other">Other</option>
                     </select>
 
                     <input name="Tags" placeholder="Tags (comma separated)" className={inputStyle} />
