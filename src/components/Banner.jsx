@@ -14,13 +14,13 @@ import { Rocket, Lightbulb, Sparkles } from "lucide-react";
 const banners = [
     {
         icon: Rocket,
-        image: "https://i.ibb.co.com/rK8Fm5TJ/Screenshot-2026-05-17-215110.png",
+        image: "https://cdn.pixabay.com/photo/2019/11/15/21/36/sparkler-4629347_1280.jpg",
         title: "Turn Your Startup Ideas Into Reality",
         desc: "Share innovative ideas, explore new startups, and build the future together with the community.",
     },
     {
         icon: Lightbulb,
-        image: "https://i.ibb.co.com/GQmBtZjk/Screenshot-2026-05-17-215058.png",
+        image: "https://cdn.pixabay.com/photo/2020/07/20/07/25/bulb-5422142_1280.jpg",
         title: "Discover & Validate Startup Ideas",
         desc: "Get feedback, improve your ideas, and connect with like-minded innovators.",
     },
@@ -54,13 +54,15 @@ const Banner = () => {
                     return (
                         <SwiperSlide key={index}>
                             <div className="relative w-full h-[260px] sm:h-[340px] md:h-[450px]">
+                                <div className="absolute inset-0 bg-cover bg-center px-2.5" >
+                                    <Image
+                                        src={item.image}
+                                        alt={`banner-${index}`}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                </div>
 
-                                <Image
-                                    src={item.image}
-                                    alt={`banner-${index}`}
-                                    fill
-                                    className="object-cover"
-                                />
 
                                 {/* Overlay */}
                                 <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
